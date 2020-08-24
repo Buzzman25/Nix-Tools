@@ -1,0 +1,94 @@
+########################################
+#####      zip tar.gz a file       #####
+########################################
+
+tar -cf {backup name}-`date +%Y-%m-%d`.tar /path/to/directory
+
+tar -czf {backup name}-`date +%Y-%m-%d`.tar.gz /path/to/directory
+
+tar -cf {backup name}-`date +%Y-%m-%d_%H.%M.%S`.tar /path/to/directory
+
+tar -czf {backup name}-`date +%Y-%m-%d_%H.%M.%S`.tar.gz /path/to/directory
+
+
+########################################
+#####      unzip tar.gz a file     #####
+########################################
+
+tar xfz archive_name.tar.gz
+
+# Verbose
+tar xfzv archive_name.tar.gz
+
+########################################
+#####     unzip tar.bz2 a file     #####
+########################################
+
+tar xvfj somefilename.tar.bz2
+
+########################################
+#####          MySQL Dump          #####
+########################################
+
+mysqldump --opt -u{username} -p -h {MySQL host} {MySQL database name} > ~/{backup name}_`date +%Y-%m-%d`.sql
+
+mysqldump --opt -u{username} -p -h {MySQL_host} {MySQL database name} | gzip > ~/{backup name}_`date +%Y-%m-%d`.sql.gz
+
+mysqldump --opt -u{username} -p -h {MySQL host} {MySQL database name} > ~/{backup name}_`date +%Y-%m-%d_%H.%M.%S`.sql
+
+mysqldump --opt -u{username} -p -h {MySQL_host} {MySQL database name} | gzip > ~/{backup name}_`date +%Y-%m-%d_%H.%M.%S`.sql.gz
+
+########################################
+#####        MySQL Restore         #####
+########################################
+
+mysql -u {username} -p -h {MySQL_host} {MySQL database name} < /path/to/backup.sql
+
+gunzip backup.sql.gz
+
+gunzip < [backupfile.sql.gz] | mysql -u [uname] -p[pass] [dbname]
+
+mysqlimport -u [uname] -p[pass] [dbname] [backupfile.sql]
+
+########################################
+#####             wget             #####
+########################################
+
+wget -O example.html http://www.electrictoolbox.com/wget-save-different-filename/
+
+########################################
+#####      wget entire website     #####
+########################################
+
+wget -r --no-parent http://site.com/
+
+########################################
+#####   DreamHost php5 location    #####
+########################################
+
+/usr/local/php5/bin/php 
+
+
+########################################
+#####    Check directory size      #####
+########################################
+
+du -sh directory
+
+########################################
+#####     Reload .bash_profile     #####
+########################################
+
+source ~/.bash_profile
+
+########################################
+##### Copy files from two servers  #####
+########################################
+
+rsync -avz -e ssh user_1@SERVER_IP:/home/ /home/
+
+########################################
+#####       Become root user       #####
+########################################
+
+sudo su -
